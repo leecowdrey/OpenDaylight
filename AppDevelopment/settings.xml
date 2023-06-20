@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 https://maven.apache.org/xsd/settings-1.0.0.xsd">
+
+  <servers>
+    <server>
+      <id>lumina-maven</id>
+      <username>lumina-vzn-demo</username>
+      <password>AKCp5e2qkc1yY5RnfnHP5qKVqACf7kiwKeVeHSc7bSRkA631yXxLTVaak3e91D9f24w7kuasA</password>
+    </server>
+
+    <server>
+      <id>lumina-maven-snapshot</id>
+      <username>lumina-vzn-demo</username>
+      <password>AKCp5e2qkc1yY5RnfnHP5qKVqACf7kiwKeVeHSc7bSRkA631yXxLTVaak3e91D9f24w7kuasA</password>
+    </server>
+  </servers>
+
+  <activeProfiles>
+    <activeProfile>lumina-maven</activeProfile>
+    <activeProfile>lumina-snapshot</activeProfile>
+    <activeProfile>opendaylight-release</activeProfile>
+    <activeProfile>opendaylight-snapshot</activeProfile>
+  </activeProfiles>
+
+  <!--
+    DO NOT EDIT BELOW UNLESS YOU KNOW WHAT YOU'RE DOING
+  -->
+
+  <profiles>
+    <profile>
+      <id>lumina-maven</id>
+      <repositories>
+        <repository>
+          <id>lumina-maven</id>
+          <name>lumina-maven</name>
+          <url>https://artifactory.luminanetworks.com/artifactory/lumina-maven</url>
+          <releases>
+            <enabled>true</enabled>
+            <updatePolicy>never</updatePolicy>
+          </releases>
+          <snapshots>
+            <enabled>false</enabled>
+          </snapshots>
+        </repository>
+      </repositories>
+
+      <pluginRepositories>
+        <pluginRepository>
+          <id>lumina-maven</id>
+          <name>lumina-maven</name>
+          <url>https://artifactory.luminanetworks.com/artifactory/lumina-maven</url>
+          <releases>
+            <enabled>true</enabled>
+            <updatePolicy>never</updatePolicy>
+          </releases>
+          <snapshots>
+            <enabled>false</enabled>
+          </snapshots>
+        </pluginRepository>
+      </pluginRepositories>
+    </profile>
+
+    <profile>
+      <id>lumina-snapshot</id>
+      <repositories>
+        <repository>
+          <id>lumina-maven-snapshot</id>
+          <name>lumina-maven-snapshot</name>
+          <url>https://artifactory.luminanetworks.com/artifactory/lumina-maven-snapshot</url>
+          <!-- Disabled because lumina-maven-snapshots contain release
+               artifacts projects need. We'll need to fix our internal
+               build and release process before we can configure these
+               policies.
+          <releases>
+            <enabled>false</enabled>
+          </releases>
+          <snapshots>
+            <enabled>true</enabled>
+          </snapshots>
+          -->
+        </repository>
+      </repositories>
+
+      <pluginRepositories>
+        <pluginRepository>
+          <id>lumina-maven-snapshot</id>
+          <name>lumina-maven-snapshot</name>
+          <url>https://artifactory.luminanetworks.com/artifactory/lumina-maven-snapshot</url>
+          <!-- Disabled because lumina-maven-snapshots contain release
+               artifacts projects need. We'll need to fix our internal
+               build and release process before we can configure these
+               policies.
+          <releases>
+            <enabled>false</enabled>
+          </releases>
+          <snapshots>
+            <enabled>true</enabled>
+          </snapshots>
+          -->
+        </pluginRepository>
+      </pluginRepositories>
+    </profile>
+
+    <profile>
+      <id>opendaylight-release</id>
+      <repositories>
+        <repository>
+          <id>opendaylight-release</id>
+          <name>opendaylight-release</name>
+          <url>https://nexus.opendaylight.org/content/repositories/opendaylight.release</url>
+          <releases>
+            <enabled>true</enabled>
+            <updatePolicy>never</updatePolicy>
+          </releases>
+          <snapshots>
+            <enabled>false</enabled>
+          </snapshots>
+        </repository>
+      </repositories>
+
+      <pluginRepositories>
+        <pluginRepository>
+          <id>opendaylight-release</id>
+          <name>opendaylight-release</name>
+          <url>https://nexus.opendaylight.org/content/repositories/opendaylight.release</url>
+          <releases>
+            <enabled>true</enabled>
+            <updatePolicy>never</updatePolicy>
+          </releases>
+          <snapshots>
+            <enabled>false</enabled>
+          </snapshots>
+        </pluginRepository>
+      </pluginRepositories>
+    </profile>
+
+    <profile>
+      <id>opendaylight-snapshot</id>
+      <repositories>
+        <repository>
+          <id>opendaylight-snapshot</id>
+          <name>opendaylight-snapshot</name>
+          <url>https://nexus.opendaylight.org/content/repositories/opendaylight.snapshot</url>
+          <releases>
+            <enabled>false</enabled>
+          </releases>
+          <snapshots>
+            <enabled>true</enabled>
+          </snapshots>
+        </repository>
+      </repositories>
+
+      <pluginRepositories>
+        <pluginRepository>
+          <id>opendaylight-snapshot</id>
+          <name>opendaylight-snapshot</name>
+          <url>https://nexus.opendaylight.org/content/repositories/opendaylight.snapshot</url>
+          <releases>
+            <enabled>false</enabled>
+          </releases>
+          <snapshots>
+            <enabled>true</enabled>
+          </snapshots>
+        </pluginRepository>
+      </pluginRepositories>
+    </profile>
+  </profiles>
+</settings>

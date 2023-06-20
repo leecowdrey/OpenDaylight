@@ -1,0 +1,146 @@
+module inventory {
+    yang-version 1;
+    namespace "http://luminanetworks.com/yang/lsc-app-sample/inventory";
+    prefix "inv";
+
+    import ietf-inet-types { prefix inet; revision-date 2013-07-15; }
+
+    organization
+        "Lumina Networks, Inc.";
+
+    contact
+        "Lumina Networks, Inc.";
+
+    description
+        "Model for device inventory management.";
+
+    revision "2019-10-31" {
+        description "Initial revision.";
+    }
+
+    typedef device-id-type {
+        type string;
+    }
+
+    grouping device-attrs {
+        description "Attributes associated with device.";
+        leaf device-id {
+            description "Unique identifier for device.";
+            type device-id-type;
+        }
+        leaf in-service {
+            description "Specifies if this device is in service.";
+            type boolean;
+            default false;
+        }
+    }
+
+    grouping interface-attrs {
+        description "Attributes associated with interface.";
+        leaf interface-name {
+            description "Unique name for interface on the device.";
+            type string;
+        }
+        leaf ip-address {
+            description "IP address associated with interface.";
+            type inet:ip-address;
+        }
+        leaf admin-up {
+            description "Specifies if interface is administratively enabled.";
+            type boolean;
+            default false;
+        }
+        leaf oper-up {
+            description "Specifies if interface is operationally enabled.";
+            type boolean;
+            config false;
+            default false;
+        }
+    }
+
+    grouping interface-status-change-type {
+        leaf device-id {
+            type device-id-type;
+        }
+        leaf interface-name {
+            type string;
+        }
+        leaf up {
+            type boolean;
+        }
+    }
+
+    container inventory {
+        description "Holds information about devices and their associated details.";
+        list device {
+            description "List of devices in the inventory.";
+            key "device-id";
+            uses device-attrs;
+
+            list interface {
+                description "List of interfaces on this device.";
+                key "interface-name";
+                uses interface-attrs;
+            }
+        }
+    }
+
+    rpc get-device-count {
+        description "Returns count of devices in inventory.";
+        input {
+            leaf in-service {
+                type boolean;
+            }
+        }
+        output {
+            leaf count {
+                type uint16;
+            }
+        }
+    }
+
+    rpc get-interface-count {
+        description "Returns count of interfaces for device.";
+        input {
+            leaf device-id {
+                type device-id-type;
+                mandatory true;
+            }
+            leaf admin-up {
+                type boolean;
+            }
+            leaf oper-up {
+                type boolean;
+            }
+        }
+        output {
+            leaf count {
+                type uint16;
+            }
+        }
+    }
+
+    rpc toggle-interface-oper-status {
+        description "Toggles operational status of interface.";
+        input {
+            leaf device-id {
+                type device-id-type;
+                mandatory true;
+            }
+            leaf interface-name {
+                type string;
+                mandatory true;
+            }
+        }
+    }
+
+    notification interface-admin-status-changed {
+        description "Notifies when administrative status of interface changes.";
+        uses interface-status-change-type;
+    }
+
+    notification interface-oper-status-changed {
+        description "Notifies when operational status of interface changes.";
+        uses interface-status-change-type;
+    }
+}
