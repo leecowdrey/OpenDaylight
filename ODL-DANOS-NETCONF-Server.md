@@ -2,9 +2,9 @@
 
 ## DaNOS
 
-![DaNOS 1908](https://danosproject.atlassian.net/wiki/spaces/DAN/pages/1310721/Features+supported+in+DANOS-1908)
-![DaNOS 2105 ISO](https://github.com/danos/build-iso/releases/download/danos%2F2105/danos-2105-base-amd64.iso)
-![DaNOS 2105 Project/Release Notes](https://danosproject.atlassian.net/wiki/spaces/DAN/pages/1347649542/DANOS+2105)
+- [DaNOS 1908](https://danosproject.atlassian.net/wiki/spaces/DAN/pages/1310721/Features+supported+in+DANOS-1908)
+- [DaNOS 2105 ISO](https://github.com/danos/build-iso/releases/download/danos%2F2105/danos-2105-base-amd64.iso)
+- [DaNOS 2105 Project/Release Notes](https://danosproject.atlassian.net/wiki/spaces/DAN/pages/1347649542/DANOS+2105)
 
 ```
 qemu-img create -f qcow2 -o preallocation=metadata /var/lib/libvirt/images/danos1908.qcow2 4G
